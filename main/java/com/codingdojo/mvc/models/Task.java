@@ -27,7 +27,6 @@ public class Task {
     private String assignee;
     @Size(min = 1, message="Priority must be present")
     private String priority;
-    // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
@@ -120,7 +119,5 @@ public class Task {
 		this.user = user;
 	}
     
-    // other getters and setters removed for brevity
-
 	
 }

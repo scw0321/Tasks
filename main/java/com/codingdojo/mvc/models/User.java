@@ -41,9 +41,7 @@ public class User {
 
     public User() {
     }
-    
-    
-    // other getters and setters removed for brevity
+        
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();

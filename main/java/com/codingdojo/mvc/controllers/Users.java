@@ -35,14 +35,10 @@ public class Users {
     public String registerForm(@ModelAttribute("user") User user) {
         return "loginPage.jsp";
     }
-//    @RequestMapping("/login")
-//    public String login() {
-//        return "loginPage.jsp";
-//    }
     
     @RequestMapping(value="/registration", method=RequestMethod.POST)
     public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session) {
-        // if result has errors, return the registration page (don't worry about validations just now)
+        // if result has errors, return the registration page
         // else, save the user in the database, save the user id in session, and redirect them to the /home route
     	userValidator.validate(user,result);
     	if(result.hasErrors()) {
@@ -107,8 +103,7 @@ public class Users {
     @RequestMapping(value="/tasks/new", method=RequestMethod.POST)
     public String create(@Valid @ModelAttribute("task") Task task, BindingResult result, HttpSession session,  Model model) {    	
     	
-    	if(result.hasErrors()) {
-//    		model.addAttribute("error", "Invalid!!Re-enter your task");     
+    	if(result.hasErrors()) {     
     		Long id =(long)session.getAttribute("userId");
         	User loginUser = userService.findUserById(id);    	
         	task.setCreator(loginUser.getName());
@@ -120,14 +115,6 @@ public class Users {
     	
     	userService.createTask(task);
 		return "redirect:/tasks";
-		
-//        if (result.hasErrors()) {
-//        	model.addAttribute("error", "Invalid!");
-//            return "new.jsp";
-//        } else {
-//        	
-//            
-//        }
     }
     @RequestMapping("/tasks/{id}")
     public String index(Model model,@PathVariable("id") Long id) {

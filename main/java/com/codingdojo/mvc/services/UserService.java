@@ -94,24 +94,7 @@ public class UserService {
 		}		
 		
 	}
-
-//	public Task updateTask(@Valid Task task) {
-//		// TODO Auto-generated method stub
-//		return taskRepository.save(task);
-//	}
-//	public Task updateTask (Long id, String task_name, String creator, String assignee, String priority) {
-//		// TODO Auto-generated method stub
-//		
-//		Task t = this.findTask(id);		
-//		if (t!=null) {
-//			t.setTask_name(task_name);
-//			t.setAssignee(assignee);
-//			t.setPriority(priority);
-//			
-//		}
-//		return taskRepository.save(t);
-//	}
-
+	
 	public Task updateTask(@Valid Task task) {
 		// TODO Auto-generated method stub
 		return taskRepository.save(task);
